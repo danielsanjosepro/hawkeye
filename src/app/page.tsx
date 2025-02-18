@@ -1,101 +1,102 @@
-import Image from "next/image";
+"use client";
+import * as framerMotion from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="min-h-screen bg-black flex flex-col">
+      {/* Hero Section */}
+      <framerMotion.motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="min-h-screen flex flex-col items-center justify-center text-center p-8"
+      >
+        <framerMotion.motion.h1
+          initial={{ y: 20 }}
+          animate={{ y: 0 }}
+          className="text-6xl font-bold mb-6 text-[#FFDF65]"
+        >
+          HAWKEYE
+        </framerMotion.motion.h1>
+        <framerMotion.motion.p
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-2xl text-white mb-8"
+        >
+          Your eyes in the urban skies.
+        </framerMotion.motion.p>
+        <framerMotion.motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="w-full max-w-4xl h-[400px] bg-black/40 border border-[#FFDF65]/20 rounded-lg flex items-center justify-center mb-12"
+        >
+          <p className="text-white/60">Video Placeholder</p>
+        </framerMotion.motion.div>
+      </framerMotion.motion.section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Features Section */}
+      <section className="py-20 bg-black/40">
+        <div className="max-w-6xl mx-auto px-8">
+          <framerMotion.motion.div
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut", staggerChildren: 0.2 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-12"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <div className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 hover:bg-black/60 transition-all duration-300">
+              <h3 className="text-xl font-bold mb-4 text-[#FFDF65]">Superior Information</h3>
+              <p className="text-white">Battles are won with superior information. Fusing drone vision and AI to create dynamic scene understanding.</p>
+            </div>
+            <div className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 hover:bg-black/60 transition-all duration-300">
+              <h3 className="text-xl font-bold mb-4 text-[#FFDF65]">3D Reconstruction</h3>
+              <p className="text-white">Multiple drones jointly reconstruct a 3D model of the battlefield in real-time.</p>
+            </div>
+            <div className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 hover:bg-black/60 transition-all duration-300">
+              <h3 className="text-xl font-bold mb-4 text-[#FFDF65]">Depth-Enabled</h3>
+              <p className="text-white">Depth-enabled reconstruction techniques enable fast responses in critical situations.</p>
+            </div>
+            <div className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 hover:bg-black/60 transition-all duration-300">
+              <h3 className="text-xl font-bold mb-4 text-[#FFDF65]">Real-time Detection</h3>
+              <p className="text-white">Real-time soldier and object detection enhance scene understanding.</p>
+            </div>
+          </framerMotion.motion.div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-4xl font-bold text-center mb-16 text-[#FFDF65]">Built for Europe. With hope.</h2>
+          <framerMotion.motion.div
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          >
+            {[1, 2, 3, 4].map((member) => (
+              <a
+                key={member}
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <framerMotion.motion.div
+                  whileHover={{ y: -5 }}
+                  className="aspect-square bg-gray-800/50 border border-[#FFDF65]/20 rounded-lg overflow-hidden hover:bg-gray-800/80 transition-all duration-300"
+                >
+                  <div className="w-full h-full flex items-center justify-center text-gray-300">
+                    Team Member {member}
+                  </div>
+                </framerMotion.motion.div>
+              </a>
+            ))}
+          </framerMotion.motion.div>
+        </div>
+      </section>
+
     </div>
   );
 }

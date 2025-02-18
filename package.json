@@ -3,10 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "deploy": "next build && gh-pages -d .next"
+    "dev": "next dev",
+    "build": "next build && touch out/.nojekyll",
+    "start": "next start",
+    "lint": "next lint",
+    "deploy": "gh-pages -d out -t",
+    "build-and-deploy": "rm -rf .next out && npm run build && npm run deploy"
   },
   "dependencies": {
+    "critters": "^0.0.23",
+    "framer-motion": "^12.4.4",
     "next": "^15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

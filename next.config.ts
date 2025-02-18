@@ -3,10 +3,19 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: 'export',
   images: {
-    unoptimized: true, // Required since GitHub Pages does not support Next.js Image Optimization
+    unoptimized: true,
   },
-  basePath: "/hawkeye", // Change this to match your repository name
-  assetPrefix: "/hawkeye", /* config options here */
+  basePath: process.env.NODE_ENV === 'production' ? "/hawkeye" : "",
+  assetPrefix: process.env.NODE_ENV === 'production' ? "/hawkeye" : "",
+  trailingSlash: true,
+  distDir: 'out',
+  // Fix for CSS in GitHub Pages
+  experimental: {
+    optimizeCss: true,
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
 };
 
 export default nextConfig;
