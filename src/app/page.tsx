@@ -3,14 +3,19 @@ import * as framerMotion from "framer-motion";
 import Image from 'next/image';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
+const getImagePath = (path: string) => {
+  if (process.env.NODE_ENV === 'production') {
+    return `/hawkeye${path}`;
+  }
+  return path;
+};
 
-// Create a team members array (you can put this before the Home component)
 const teamMembers = [
   {
     id: 1,
     name: "Juan Carlos Climent",
     role: "Software Engineer",
-    image: "/images/team/juanqui.jpeg",
+    image: getImagePath("/images/team/juanqui.jpeg"),
     linkedin: "https://www.linkedin.com/in/juan-carlos-climent-pardo/",
     github: "https://github.com/jc-cp"
   },
@@ -18,7 +23,7 @@ const teamMembers = [
     id: 2,
     name: "Xabier Irizar",
     role: "Software Engineer",
-    image: "/images/team/xabi.jpeg",
+    image: getImagePath("/images/team/xabi.jpeg"),
     linkedin: "https://www.linkedin.com/in/xabier-irizar/",
     github: "https://github.com/xabirizar9"
   },
@@ -26,7 +31,7 @@ const teamMembers = [
     id: 3,
     name: "Daniel San José",
     role: "Software Engineer",
-    image: "/images/team/dani.jpeg",
+    image: getImagePath("/images/team/dani.jpeg"),
     linkedin: "https://www.linkedin.com/in/daniel-san-jos%C3%A9-pro-0683441a5/",
     github: "https://github.com/danielsanjosepro"
   },
@@ -34,7 +39,7 @@ const teamMembers = [
     id: 4,
     name: "Alvaro Ritter",
     role: "Software Engineer",
-    image: "/images/team/alvaro.jpeg",
+    image: getImagePath("/images/team/alvaro.jpeg"),
     linkedin: "https://www.linkedin.com/in/alvaro-ritter/",
     github: "https://github.com/alvaroritter"
   }
