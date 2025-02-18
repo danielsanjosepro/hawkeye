@@ -5,7 +5,7 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 const getImagePath = (path: string) => {
   if (process.env.NODE_ENV === 'production') {
-    return `/hawkeye${path}`;
+    return `/hawkeye/public${path}`;
   }
   return path;
 };
