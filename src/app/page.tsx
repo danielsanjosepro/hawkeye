@@ -1,5 +1,45 @@
 "use client";
 import * as framerMotion from "framer-motion";
+import Image from 'next/image';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+
+
+// Create a team members array (you can put this before the Home component)
+const teamMembers = [
+  {
+    id: 1,
+    name: "Juan Carlos Climent",
+    role: "Software Engineer",
+    image: "/images/team/juanqui.jpeg",
+    linkedin: "https://www.linkedin.com/in/juan-carlos-climent-pardo/",
+    github: "https://github.com/jc-cp"
+  },
+  {
+    id: 2,
+    name: "Xabier Irizar",
+    role: "Software Engineer",
+    image: "/images/team/xabi.jpeg",
+    linkedin: "https://www.linkedin.com/in/xabier-irizar/",
+    github: "https://github.com/xabirizar9"
+  },
+  {
+    id: 3,
+    name: "Daniel San José",
+    role: "Software Engineer",
+    image: "/images/team/dani.jpeg",
+    linkedin: "https://www.linkedin.com/in/daniel-san-jos%C3%A9-pro-0683441a5/",
+    github: "https://github.com/danielsanjosepro"
+  },
+  {
+    id: 4,
+    name: "Alvaro Ritter",
+    role: "Software Engineer",
+    image: "/images/team/alvaro.jpeg",
+    linkedin: "https://www.linkedin.com/in/alvaro-ritter/",
+    github: "https://github.com/alvaroritter"
+  }
+  // Add more team members following the same structure
+];
 
 export default function Home() {
   return (
@@ -67,31 +107,57 @@ export default function Home() {
 
       {/* Team Section */}
       <section className="py-20">
-        <div className="max-w-6xl mx-auto px-8">
-          <h2 className="text-4xl font-bold text-center mb-16 text-[#FFDF65]">Built for Europe. With hope.</h2>
+        <div className="max-w-7xl mx-auto px-8">
+          <h2 className="text-4xl font-bold text-center mb-16 text-[#FFDF65]">
+            Built for Europe. With hope.
+          </h2>
           <framerMotion.motion.div
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
           >
-            {[1, 2, 3, 4].map((member) => (
-              <a
-                key={member}
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group"
-              >
+            {teamMembers.map((member) => (
+              <div key={member.id} className="group">
                 <framerMotion.motion.div
                   whileHover={{ y: -5 }}
-                  className="aspect-square bg-gray-800/50 border border-[#FFDF65]/20 rounded-lg overflow-hidden hover:bg-gray-800/80 transition-all duration-300"
+                  className="aspect-[4/5] bg-gray-800/50 border border-[#FFDF65]/20 rounded-lg overflow-hidden hover:bg-gray-800/80 transition-all duration-300"
                 >
-                  <div className="w-full h-full flex items-center justify-center text-gray-300">
-                    Team Member {member}
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover transition-transform group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-6">
+                      <h3 className="text-xl font-semibold text-[#FFDF65] mb-1">
+                        {member.name}
+                      </h3>
+                      <p className="text-base text-gray-300 mb-3">{member.role}</p>
+                      <div className="flex gap-4">
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-300 hover:text-[#FFDF65] transition-colors"
+                        >
+                          <FaLinkedin size={24} />
+                        </a>
+                        <a
+                          href={member.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-300 hover:text-[#FFDF65] transition-colors"
+                        >
+                          <FaGithub size={24} />
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </framerMotion.motion.div>
-              </a>
+              </div>
             ))}
           </framerMotion.motion.div>
         </div>
