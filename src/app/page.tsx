@@ -1,7 +1,7 @@
 "use client";
 import * as framerMotion from "framer-motion";
 import Image from 'next/image';
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaXTwitter } from 'react-icons/fa6';
 
 const getImagePath = (path: string) => {
   if (process.env.NODE_ENV === 'production') {
@@ -25,7 +25,8 @@ const teamMembers = [
     role: "Software Engineer",
     image: getImagePath("/images/team/xabi.jpeg"),
     linkedin: "https://www.linkedin.com/in/xabier-irizar/",
-    github: "https://github.com/xabirizar9"
+    github: "https://github.com/xabirizar9",
+    twitter: "https://x.com/projectxabi"
   },
   {
     id: 3,
@@ -74,19 +75,19 @@ export default function Home() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="w-full max-w-4xl bg-black/40 border border-[#FFDF65]/20 rounded-lg overflow-hidden mb-12"
+          style={{ maxWidth: "var(--frame-size, 70rem)" }}
+          className="w-full aspect-[16/9] bg-black/40 border border-[#FFDF65]/20 rounded-lg flex items-center justify-center mb-12 overflow-hidden"
         >
-          <div className="relative w-full pt-[56.25%]">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute top-0 left-0 w-full h-full object-contain"
-            >
-              <source src={process.env.NODE_ENV === 'production' ? "/hawkeye/videos/demo_video.mp4" : "/videos/demo_video.mp4"} type="video/mp4" />
-            </video>
-          </div>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-contain"
+          >
+            <source src={getImagePath("/videos/demo_video.mp4")} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </framerMotion.motion.div>
       </framerMotion.motion.section>
 
@@ -215,6 +216,16 @@ export default function Home() {
                         >
                           <FaGithub size={24} />
                         </a>
+                        {member.twitter && (
+                          <a
+                            href={member.twitter}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-300 hover:text-[#FFDF65] transition-colors"
+                          >
+                            <FaXTwitter size={24} />
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>
