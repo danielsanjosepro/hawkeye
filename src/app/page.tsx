@@ -81,6 +81,25 @@ const useCases = [
   }
 ];
 
+const features = [
+  {
+    title: "Superior Information",
+    description: "Battles are won with superior information. Fusing drone vision and AI to create dynamic scene understanding."
+  },
+  {
+    title: "Real-Time Analysis",
+    description: "Instant detection and classification of objects, vehicles, and personnel in the field of operation."
+  },
+  {
+    title: "Tactical Advantage",
+    description: "Gain the upper hand with comprehensive situational awareness and predictive threat assessment."
+  },
+  {
+    title: "Command Integration",
+    description: "Seamlessly integrate with existing command and control systems for coordinated response."
+  }
+];
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-black flex flex-col">
@@ -126,85 +145,33 @@ export default function Home() {
       </motion.section>
 
       {/* Features Section */}
-      <section className="pt-6 pb-12 bg-black/40">
+      <section className="pt-2 pb-12 bg-black/40">
         <div className="max-w-6xl mx-auto px-8">
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut", staggerChildren: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-12"
-          >
-            <motion.div
-              whileHover={{
-                scale: 1.02,
-                backgroundColor: "rgba(255, 223, 101, 0.9)",
-                transition: { duration: 0.2 }
-              }}
-              className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group"
-            >
-              <h3 className="text-xl font-bold mb-4 text-[#FFDF65] transition-colors duration-200 group-hover:text-black">
-                Superior Information
-              </h3>
-              <p className="text-white transition-colors duration-200 group-hover:text-black">
-                Battles are won with superior information. Fusing drone vision and AI to create dynamic scene understanding.
-              </p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{
-                scale: 1.02,
-                backgroundColor: "rgba(255, 223, 101, 0.9)",
-                transition: { duration: 0.2 }
-              }}
-              className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group"
-            >
-              <h3 className="text-xl font-bold mb-4 text-[#FFDF65] transition-colors duration-200 group-hover:text-black">
-                3D Reconstruction
-              </h3>
-              <p className="text-white transition-colors duration-200 group-hover:text-black">
-                Multiple drones jointly reconstruct a 3D model of the battlefield in real-time.
-              </p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{
-                scale: 1.02,
-                backgroundColor: "rgba(255, 223, 101, 0.9)",
-                transition: { duration: 0.2 }
-              }}
-              className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group"
-            >
-              <h3 className="text-xl font-bold mb-4 text-[#FFDF65] transition-colors duration-200 group-hover:text-black">
-                Depth-Enabled
-              </h3>
-              <p className="text-white transition-colors duration-200 group-hover:text-black">
-                Depth-enabled reconstruction and detection techniques enable fast responses in critical situations.
-              </p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{
-                scale: 1.02,
-                backgroundColor: "rgba(255, 223, 101, 0.9)",
-                transition: { duration: 0.2 }
-              }}
-              className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group"
-            >
-              <h3 className="text-xl font-bold mb-4 text-[#FFDF65] transition-colors duration-200 group-hover:text-black">
-                Real-time Detection
-              </h3>
-              <p className="text-white transition-colors duration-200 group-hover:text-black">
-                Real-time soldier and object detection enhance scene understanding.
-              </p>
-            </motion.div>
-          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {features.map((feature: { title: string; description: string }, index: number) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group hover:scale-[1.02] hover:bg-[rgba(255,223,101,0.9)] active:scale-[1.02] active:bg-[rgba(255,223,101,0.9)] transition-all duration-200"
+              >
+                <h3 className="text-xl font-bold mb-4 text-[#FFDF65] group-hover:text-black group-active:text-black transition-colors duration-200">
+                  {feature.title}
+                </h3>
+                <p className="text-white group-hover:text-black group-active:text-black transition-colors duration-200">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Use Cases Section */}
-      <section className="py-20 bg-black/40">
-        <div className="max-w-7xl mx-auto px-8">
+      {/* Applications Section */}
+      <section className="pt-12 pb-20 bg-black/40">
+        <div className="max-w-6xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -228,20 +195,14 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: useCase.id * 0.1 }}
-                whileHover={{
-                  scale: 1.02,
-                  backgroundColor: "rgba(255, 223, 101, 0.9)",
-                  transition: { duration: 0.2 }
-                }}
-                className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group"
+                className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group hover:scale-[1.02] hover:bg-[rgba(255,223,101,0.9)] active:scale-[1.02] active:bg-[rgba(255,223,101,0.9)] transition-all duration-200"
               >
-                {/* Content */}
                 <div className="relative z-10">
-                  <useCase.icon className="text-[#FFDF65] w-12 h-12 mb-6 transition-colors duration-200 group-hover:text-black" />
-                  <h3 className="text-xl font-bold mb-4 text-[#FFDF65] transition-colors duration-200 group-hover:text-black">
+                  <useCase.icon className="text-[#FFDF65] w-12 h-12 mb-6 transition-colors duration-200 group-hover:text-black group-active:text-black" />
+                  <h3 className="text-xl font-bold mb-4 text-[#FFDF65] transition-colors duration-200 group-hover:text-black group-active:text-black">
                     {useCase.title}
                   </h3>
-                  <p className="text-white transition-colors duration-200 group-hover:text-black">
+                  <p className="text-white transition-colors duration-200 group-hover:text-black group-active:text-black">
                     {useCase.description}
                   </p>
                 </div>
