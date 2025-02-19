@@ -74,9 +74,19 @@ export default function Home() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="w-full max-w-4xl h-[400px] bg-black/40 border border-[#FFDF65]/20 rounded-lg flex items-center justify-center mb-12"
+          className="w-full max-w-4xl bg-black/40 border border-[#FFDF65]/20 rounded-lg overflow-hidden mb-12"
         >
-          <p className="text-white/60">Video Placeholder</p>
+          <div className="relative w-full pt-[56.25%]">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute top-0 left-0 w-full h-full object-contain"
+            >
+              <source src={process.env.NODE_ENV === 'production' ? "/hawkeye/videos/demo_video.mp4" : "/videos/demo_video.mp4"} type="video/mp4" />
+            </video>
+          </div>
         </framerMotion.motion.div>
       </framerMotion.motion.section>
 
@@ -90,22 +100,69 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut", staggerChildren: 0.2 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-12"
           >
-            <div className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 hover:bg-black/60 transition-all duration-300">
-              <h3 className="text-xl font-bold mb-4 text-[#FFDF65]">Superior Information</h3>
-              <p className="text-white">Battles are won with superior information. Fusing drone vision and AI to create dynamic scene understanding.</p>
-            </div>
-            <div className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 hover:bg-black/60 transition-all duration-300">
-              <h3 className="text-xl font-bold mb-4 text-[#FFDF65]">3D Reconstruction</h3>
-              <p className="text-white">Multiple drones jointly reconstruct a 3D model of the battlefield in real-time.</p>
-            </div>
-            <div className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 hover:bg-black/60 transition-all duration-300">
-              <h3 className="text-xl font-bold mb-4 text-[#FFDF65]">Depth-Enabled</h3>
-              <p className="text-white">Depth-enabled reconstruction techniques enable fast responses in critical situations.</p>
-            </div>
-            <div className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 hover:bg-black/60 transition-all duration-300">
-              <h3 className="text-xl font-bold mb-4 text-[#FFDF65]">Real-time Detection</h3>
-              <p className="text-white">Real-time soldier and object detection enhance scene understanding.</p>
-            </div>
+            <framerMotion.motion.div
+              whileHover={{
+                scale: 1.02,
+                backgroundColor: "rgba(255, 223, 101, 0.9)",
+                transition: { duration: 0.2 }
+              }}
+              className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group"
+            >
+              <h3 className="text-xl font-bold mb-4 text-[#FFDF65] transition-colors duration-200 group-hover:text-black">
+                Superior Information
+              </h3>
+              <p className="text-white transition-colors duration-200 group-hover:text-black">
+                Battles are won with superior information. Fusing drone vision and AI to create dynamic scene understanding.
+              </p>
+            </framerMotion.motion.div>
+
+            <framerMotion.motion.div
+              whileHover={{
+                scale: 1.02,
+                backgroundColor: "rgba(255, 223, 101, 0.9)",
+                transition: { duration: 0.2 }
+              }}
+              className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group"
+            >
+              <h3 className="text-xl font-bold mb-4 text-[#FFDF65] transition-colors duration-200 group-hover:text-black">
+                3D Reconstruction
+              </h3>
+              <p className="text-white transition-colors duration-200 group-hover:text-black">
+                Multiple drones jointly reconstruct a 3D model of the battlefield in real-time.
+              </p>
+            </framerMotion.motion.div>
+
+            <framerMotion.motion.div
+              whileHover={{
+                scale: 1.02,
+                backgroundColor: "rgba(255, 223, 101, 0.9)",
+                transition: { duration: 0.2 }
+              }}
+              className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group"
+            >
+              <h3 className="text-xl font-bold mb-4 text-[#FFDF65] transition-colors duration-200 group-hover:text-black">
+                Depth-Enabled
+              </h3>
+              <p className="text-white transition-colors duration-200 group-hover:text-black">
+                Depth-enabled reconstruction techniques enable fast responses in critical situations.
+              </p>
+            </framerMotion.motion.div>
+
+            <framerMotion.motion.div
+              whileHover={{
+                scale: 1.02,
+                backgroundColor: "rgba(255, 223, 101, 0.9)",
+                transition: { duration: 0.2 }
+              }}
+              className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group"
+            >
+              <h3 className="text-xl font-bold mb-4 text-[#FFDF65] transition-colors duration-200 group-hover:text-black">
+                Real-time Detection
+              </h3>
+              <p className="text-white transition-colors duration-200 group-hover:text-black">
+                Real-time soldier and object detection enhance scene understanding.
+              </p>
+            </framerMotion.motion.div>
           </framerMotion.motion.div>
         </div>
       </section>
