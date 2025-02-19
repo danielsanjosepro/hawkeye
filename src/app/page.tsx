@@ -228,36 +228,22 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: useCase.id * 0.1 }}
+                whileHover={{
+                  scale: 1.02,
+                  backgroundColor: "rgba(255, 223, 101, 0.9)",
+                  transition: { duration: 0.2 }
+                }}
+                className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group"
               >
-                <div className={`
-                  relative p-8 rounded-2xl border border-[#FFDF65]/20 
-                  overflow-hidden group hover:border-[#FFDF65]/40 
-                  transition-all duration-300
-                `}>
-                  {/* Gradient Background */}
-                  <div className={`
-                    absolute top-0 left-0 w-full h-full 
-                    bg-gradient-to-br ${useCase.color} opacity-20 
-                    group-hover:opacity-30 transition-opacity duration-300
-                  `} />
-
-                  {/* Content */}
-                  <div className="relative z-10">
-                    <useCase.icon className="text-[#FFDF65] w-12 h-12 mb-6" />
-                    <h3 className="text-2xl font-bold mb-4 text-white">
-                      {useCase.title}
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed">
-                      {useCase.description}
-                    </p>
-                  </div>
-
-                  {/* Interactive Elements */}
-                  <motion.div
-                    className="absolute bottom-0 left-0 w-full h-1 bg-[#FFDF65]/20"
-                    whileHover={{ scaleX: 1.05 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  />
+                {/* Content */}
+                <div className="relative z-10">
+                  <useCase.icon className="text-[#FFDF65] w-12 h-12 mb-6 transition-colors duration-200 group-hover:text-black" />
+                  <h3 className="text-xl font-bold mb-4 text-[#FFDF65] transition-colors duration-200 group-hover:text-black">
+                    {useCase.title}
+                  </h3>
+                  <p className="text-white transition-colors duration-200 group-hover:text-black">
+                    {useCase.description}
+                  </p>
                 </div>
               </motion.div>
             ))}
