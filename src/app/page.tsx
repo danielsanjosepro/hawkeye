@@ -116,7 +116,7 @@ export default function Home() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.5 }}
-            className="text-8xl md:text-8xl font-bold mb-4 text-[#FFDF65]"
+            className="text-6xl md:text-8xl font-bold mb-4 text-[#FFDF65]"
           >
             HAWKEYE
           </motion.h1>
