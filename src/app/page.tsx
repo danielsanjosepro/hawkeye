@@ -31,7 +31,7 @@ const teamMembers = [
   {
     id: 3,
     name: "Daniel San José",
-    role: "Software Engineer",
+    role: "Robotics Engineer",
     image: getImagePath("/images/team/dani.jpeg"),
     linkedin: "https://www.linkedin.com/in/daniel-san-jos%C3%A9-pro-0683441a5/",
     github: "https://github.com/danielsanjosepro"
