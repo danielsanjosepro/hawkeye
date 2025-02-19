@@ -42,7 +42,7 @@ const teamMembers = [
   {
     id: 4,
     name: "Alvaro Ritter",
-    role: "AI Engineer",
+    role: "AI & Product Engineer",
     image: getImagePath("/images/team/alvaro.jpeg"),
     linkedin: "https://www.linkedin.com/in/alvaro-ritter/",
     github: "https://github.com/alvaroritter"
