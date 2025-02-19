@@ -14,10 +14,11 @@ const teamMembers = [
   {
     id: 1,
     name: "Juan Carlos Climent",
-    role: "Software Engineer",
+    role: "AI Engineer",
     image: getImagePath("/images/team/juanqui.jpeg"),
     linkedin: "https://www.linkedin.com/in/juan-carlos-climent-pardo/",
-    github: "https://github.com/jc-cp"
+    github: "https://github.com/jc-cp", 
+    twitter: "https://x.com/jcliment55"
   },
   {
     id: 2,
