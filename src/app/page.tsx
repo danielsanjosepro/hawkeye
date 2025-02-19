@@ -25,7 +25,7 @@ const teamMembers = [
   {
     id: 2,
     name: "Xabier Irizar",
-    role: "Software Engineer",
+    role: "Robotics & AI Engineer",
     image: getImagePath("/images/team/xabi.jpeg"),
     linkedin: "https://www.linkedin.com/in/xabier-irizar/",
     github: "https://github.com/xabirizar9",
@@ -42,7 +42,7 @@ const teamMembers = [
   {
     id: 4,
     name: "Alvaro Ritter",
-    role: "Software Engineer",
+    role: "AI Engineer",
     image: getImagePath("/images/team/alvaro.jpeg"),
     linkedin: "https://www.linkedin.com/in/alvaro-ritter/",
     github: "https://github.com/alvaroritter"
