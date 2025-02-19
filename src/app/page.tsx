@@ -1,7 +1,7 @@
 "use client";
 import * as framerMotion from "framer-motion";
 import Image from 'next/image';
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaXTwitter } from 'react-icons/fa6';
 
 const getImagePath = (path: string) => {
   if (process.env.NODE_ENV === 'production') {
@@ -25,7 +25,8 @@ const teamMembers = [
     role: "Software Engineer",
     image: getImagePath("/images/team/xabi.jpeg"),
     linkedin: "https://www.linkedin.com/in/xabier-irizar/",
-    github: "https://github.com/xabirizar9"
+    github: "https://github.com/xabirizar9",
+    twitter: "https://x.com/projectxabi"
   },
   {
     id: 3,
@@ -168,6 +169,16 @@ export default function Home() {
                         >
                           <FaGithub size={24} />
                         </a>
+                        {member.twitter && (
+                          <a
+                            href={member.twitter}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-300 hover:text-[#FFDF65] transition-colors"
+                          >
+                            <FaXTwitter size={24} />
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>
