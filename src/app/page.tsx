@@ -74,9 +74,19 @@ export default function Home() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="w-full max-w-4xl h-[400px] bg-black/40 border border-[#FFDF65]/20 rounded-lg flex items-center justify-center mb-12"
+          style={{ maxWidth: "var(--frame-size, 70rem)" }}
+          className="w-full aspect-[16/9] bg-black/40 border border-[#FFDF65]/20 rounded-lg flex items-center justify-center mb-12 overflow-hidden"
         >
-          <p className="text-white/60">Video Placeholder</p>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-contain"
+          >
+            <source src={getImagePath("/videos/demo_video.mp4")} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </framerMotion.motion.div>
       </framerMotion.motion.section>
 
