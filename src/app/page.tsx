@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { FaLinkedin, FaGithub, FaXTwitter } from 'react-icons/fa6';
 import { MdMilitaryTech, MdLocationSearching } from 'react-icons/md';
 import { FaBuilding, FaHandHoldingMedical } from 'react-icons/fa';
+import { FeatureCard } from '@/components/FeatureCard';
 
 const getImagePath = (path: string) => {
   if (process.env.NODE_ENV === 'production') {
@@ -19,7 +20,7 @@ const teamMembers = [
     role: "Robotics & AI Engineer",
     image: getImagePath("/images/team/juanqui.jpeg"),
     linkedin: "https://www.linkedin.com/in/juan-carlos-climent-pardo/",
-    github: "https://github.com/jc-cp", 
+    github: "https://github.com/jc-cp",
     twitter: "https://x.com/jcliment55"
   },
   {
@@ -103,74 +104,109 @@ const features = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-black flex flex-col">
-      {/* Hero Section */}
+      {/* Title Section */}
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="flex flex-col items-center justify-center text-center p-8"
+        transition={{ duration: 1.5 }}
+        className="bg-black w-full py-20"
       >
-        <motion.h1
-          initial={{ y: 20 }}
-          animate={{ y: 0 }}
-          className="text-6xl font-bold mb-6 text-[#FFDF65]"
-        >
-          HAWKEYE
-        </motion.h1>
-        <motion.p
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-2xl text-white mb-8"
-        >
-          Your eyes in the urban skies.
-        </motion.p>
+        <div className="w-full max-w-6xl mx-auto text-center px-8">
+          <motion.h1
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.2, delay: 0.5 }}
+            className="text-8xl md:text-8xl font-bold mb-6 text-[#FFDF65]"
+          >
+            HAWKEYE
+          </motion.h1>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.2, delay: 0.8 }}
+            className="text-2xl md:text-3xl text-white mb-8"
+          >
+            Your eyes in the urban skies.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Video Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="relative w-full aspect-video mb-24 overflow-hidden"
+      >
+        {/* Video Background */}
         <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          style={{ maxWidth: "var(--frame-size, 70rem)" }}
-          className="w-full aspect-[16/9] bg-black/40 border border-[#FFDF65]/20 rounded-lg flex items-center justify-center mb-6 overflow-hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="relative w-full h-full"
         >
+          <div className="absolute inset-0 bg-black/10 z-2"></div>
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain bg-black"
           >
             <source src={getImagePath("/videos/demo_video.mp4")} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0, y: 0 }}
+          animate={{ opacity: 1, y: [0, 10, 0] }}
+          transition={{
+            opacity: { delay: 1, duration: 1 },
+            y: { repeat: Infinity, duration: 2 }
+          }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
+        >
+          <div className="w-8 h-12 border-2 border-[#FFDF65] rounded-full flex items-start justify-center p-2">
+            <motion.div
+              animate={{ y: [0, 12, 0] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+              className="w-1 h-3 bg-[#FFDF65] rounded-full"
+            />
+          </div>
+        </motion.div>
       </motion.section>
 
       {/* Features Section */}
-      <section className="pt-2 pb-12 bg-black/40">
+      <section className="py-2 bg-gradient-to-b from-black/60 to-black/40">
         <div className="max-w-6xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {features.map((feature: { title: string; description: string }, index: number) => (
-              <div
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {features.map((feature, index) => (
+              <FeatureCard
                 key={index}
-                className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group hover:scale-[1.02] hover:bg-[rgba(255,223,101,0.9)] active:scale-[1.02] active:bg-[rgba(255,223,101,0.9)] transition-all duration-200"
-              >
-                <h3 className="text-xl font-bold mb-4 text-[#FFDF65] group-hover:text-black group-active:text-black transition-colors duration-200">
-                  {feature.title}
-                </h3>
-                <p className="text-white group-hover:text-black group-active:text-black transition-colors duration-200">
-                  {feature.description}
-                </p>
-              </div>
+                title={feature.title}
+                description={feature.description}
+                index={index}
+              />
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Applications Section */}
-      <section className="pt-12 pb-20 bg-black/40">
+      <section className="py-24 bg-gradient-to-b from-black/60 to-black/40">
         <div className="max-w-6xl mx-auto px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
@@ -183,36 +219,44 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            {useCases.map((useCase) => (
-              <div
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9 }}
+          >
+            {useCases.map((useCase, index) => (
+              <FeatureCard
                 key={useCase.id}
-                className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group hover:scale-[1.02] hover:bg-[rgba(255,223,101,0.9)] active:scale-[1.02] active:bg-[rgba(255,223,101,0.9)] transition-all duration-200"
-              >
-                <div className="relative z-10">
-                  <useCase.icon className="text-[#FFDF65] w-12 h-12 mb-6 transition-colors duration-200 group-hover:text-black group-active:text-black" />
-                  <h3 className="text-xl font-bold mb-4 text-[#FFDF65] transition-colors duration-200 group-hover:text-black group-active:text-black">
-                    {useCase.title}
-                  </h3>
-                  <p className="text-white transition-colors duration-200 group-hover:text-black group-active:text-black">
-                    {useCase.description}
-                  </p>
-                </div>
-              </div>
+                title={useCase.title}
+                description={useCase.description}
+                icon={useCase.icon}
+                index={index}
+              />
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Team Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-8">
-          <h2 className="text-4xl font-bold text-center mb-16 text-[#FFDF65]">
-            Built for Europe. With hope.
-          </h2>
           <motion.div
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-center mb-16 text-[#FFDF65]">
+              Built for Europe. With hope.
+            </h2>
+          </motion.div>
+          <motion.div
+            initial={{ y: 60, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
           >
