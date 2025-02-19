@@ -116,7 +116,7 @@ export default function Home() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.5 }}
-            className="text-8xl md:text-8xl font-bold mb-6 text-[#FFDF65]"
+            className="text-8xl md:text-8xl font-bold mb-4 text-[#FFDF65]"
           >
             HAWKEYE
           </motion.h1>
@@ -124,7 +124,7 @@ export default function Home() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.8 }}
-            className="text-2xl md:text-3xl text-white mb-8"
+            className="text-2xl md:text-3xl text-white mb-4"
           >
             Your eyes in the urban skies.
           </motion.p>
@@ -136,7 +136,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="relative w-full aspect-video mb-24 overflow-hidden"
+        className="relative w-full aspect-video mb-4 overflow-hidden"
       >
         {/* Video Background */}
         <motion.div
@@ -166,7 +166,7 @@ export default function Home() {
             opacity: { delay: 1, duration: 1 },
             y: { repeat: Infinity, duration: 2 }
           }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
+          className="absolute bottom-8 md:top-8 left-1/2 transform -translate-x-1/2 z-20"
         >
           <div className="w-8 h-12 border-2 border-[#FFDF65] rounded-full flex items-start justify-center p-2">
             <motion.div
@@ -177,6 +177,8 @@ export default function Home() {
           </div>
         </motion.div>
       </motion.section>
+
+      <div className="py-10 md:py-5"></div>
 
       {/* Features Section */}
       <section className="py-2 bg-gradient-to-b from-black/60 to-black/40">
@@ -193,7 +195,7 @@ export default function Home() {
                 key={index}
                 title={feature.title}
                 description={feature.description}
-                index={index}
+              //index={index}
               />
             ))}
           </motion.div>
@@ -226,13 +228,13 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.9 }}
           >
-            {useCases.map((useCase, index) => (
+            {useCases.map((useCase,) => (
               <FeatureCard
                 key={useCase.id}
                 title={useCase.title}
                 description={useCase.description}
                 icon={useCase.icon}
-                index={index}
+              //index={index}
               />
             ))}
           </motion.div>

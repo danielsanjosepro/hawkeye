@@ -4,10 +4,10 @@ interface FeatureCardProps {
     title: string;
     description: string;
     icon?: IconType;
-    index: number;
+    //index: number;
 }
 
-export const FeatureCard = ({ title, description, icon: Icon, index }: FeatureCardProps) => {
+export const FeatureCard = ({ title, description, icon: Icon }: FeatureCardProps) => {
     return (
         <div className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group hover:scale-[1.01] hover:bg-[rgba(255,223,101,0.9)] active:scale-[1.01] active:bg-[rgba(255,223,101,0.9)] transition-all duration-300 ease-out">
             {Icon && (
