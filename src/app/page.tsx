@@ -149,12 +149,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {features.map((feature: { title: string; description: string }, index: number) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
                 className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group hover:scale-[1.02] hover:bg-[rgba(255,223,101,0.9)] active:scale-[1.02] active:bg-[rgba(255,223,101,0.9)] transition-all duration-200"
               >
                 <h3 className="text-xl font-bold mb-4 text-[#FFDF65] group-hover:text-black group-active:text-black transition-colors duration-200">
@@ -163,7 +159,7 @@ export default function Home() {
                 <p className="text-white group-hover:text-black group-active:text-black transition-colors duration-200">
                   {feature.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -189,12 +185,8 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             {useCases.map((useCase) => (
-              <motion.div
+              <div
                 key={useCase.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: useCase.id * 0.1 }}
                 className="bg-black/80 rounded-lg p-8 border border-[#FFDF65]/20 group hover:scale-[1.02] hover:bg-[rgba(255,223,101,0.9)] active:scale-[1.02] active:bg-[rgba(255,223,101,0.9)] transition-all duration-200"
               >
                 <div className="relative z-10">
@@ -206,7 +198,7 @@ export default function Home() {
                     {useCase.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
